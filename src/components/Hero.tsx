@@ -92,7 +92,12 @@ const Hero = () => {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a 
-                href="mailto:rafiihibatullah420@gmail.com"
+                 onClick={() =>
+                  window.open(
+                    'https://mail.google.com/mail/?view=cm&fs=1&to=rafiihibatullah420@gmail.com',
+                    '_blank'
+                  )
+                }
                 className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-smooth border border-white/20 hover:border-white/40"
               >
                 <Mail className="h-6 w-6" />

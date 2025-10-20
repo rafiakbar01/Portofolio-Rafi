@@ -9,7 +9,7 @@ const Experience = () => {
     {
       company: "PT Denso Manufacturing Indonesia (PT DMIA)",
       position: "System Development Intern",
-      location: "Indonesia",
+      location: "Cikarang",
       period: "Magang",
       responsibilities: [
         "Mengembangkan sistem internal berbasis web untuk membantu otomasi proses di departemen IT",
@@ -22,8 +22,8 @@ const Experience = () => {
     {
       company: "PT Aisan Nasmoco Industri (PT ANI)",
       position: "PPIC Delivery",
-      location: "Indonesia",
-      period: "Magang",
+      location: "Cikarang",
+      period: "Kontrak",
       responsibilities: [
         "Menginventori part di warehouse dan line produksi",
         "Menyiapkan finish good untuk dikirim ke customer",
