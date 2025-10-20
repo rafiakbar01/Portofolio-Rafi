@@ -10,14 +10,38 @@ const Education = () => {
       degree: "Teknologi Rekayasa Perangkat Lunak",
       status: "Mahasiswa Aktif",
       period: "Sedang Berlangsung",
-      type: "Diploma 4"
+      type: "Diploma 4",
+      organizations: [
+        {
+          name: "HIMTECH",
+          role: "Divisi 3 ( 2022-2023 ) dan Anggota( 2023-2025)",
+          status: "Aktif"
+        },
+        {
+          name: "UKM Badminton",
+          role: "Anggota",
+          status: "Aktif"
+        }
+      ]
     },
     {
       institution: "SMK Ananda Mitra Industri Deltamas",
       degree: "Teknik Pemesinan",
       status: "Lulus",
-      period: "Selesai",
-      type: "Sekolah Menengah Kejuruan"
+      period: "Lulus Tahun 2022",
+      type: "Sekolah Menengah Kejuruan",
+      organizations: [
+        {
+          name: "Ekstrakurikuler Badminton",
+          role: "Anggota",
+          status: "aktif"
+        },
+        {
+          name: "Ekstrakurikuler Bahasa Jepang",
+          role: "Anggota",
+          status: "Aktif"
+        }
+      ]
     }
   ];
 
@@ -70,6 +94,21 @@ const Education = () => {
                   <p className="text-muted-foreground mb-2">
                     {edu.type}
                   </p>
+
+                  {edu.organizations && edu.organizations.length > 0 && (
+                    <div className="mb-2">
+                      <span className="text-sm font-medium text-primary">
+                        Organisasi: 
+                      </span>
+                      <div className="mt-1 space-y-1">
+                        {edu.organizations.map((org, orgIndex) => (
+                          <div key={orgIndex} className="text-muted-foreground text-sm">
+                            <span className="font-medium">{org.name}</span> - {org.role} ({org.status})
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Calendar className="h-4 w-4" />

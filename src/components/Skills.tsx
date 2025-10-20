@@ -10,30 +10,53 @@ const Skills = () => {
       icon: Code2,
       title: "Pemrograman",
       color: "bg-blue-500/10 text-blue-500",
-      skills: ["CodeIgniter", "Laravel", "PHP", "JavaScript", "jQuery", "HTML", "CSS","React","TypeScript"]
+      skills: [
+        { name: "CodeIgniter", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain.svg" },
+        { name: "Laravel", img: "https://tse4.mm.bing.net/th/id/OIP.bX2TQK--FaRjUxOYoQ8CrwHaDt?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { name: "PHP", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+        { name: "JavaScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+        { name: "jQuery", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain.svg" },
+        { name: "HTML", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+        { name: "CSS", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+        { name: "React", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "TypeScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" }
+      ]
     },
     {
       icon: Zap,
       title: "Otomasi & Tools",
       color: "bg-purple-500/10 text-purple-500",
-      skills: ["Microsoft Power Automate", "Git", "GitHub", "Cursor", "Visual Studio Code"]
+      skills: [
+        { name: "Microsoft Power Automate", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" }, // substitute icon
+        { name: "Git", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+        { name: "GitHub", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+        { name: "Cursor", img: "https://paulstamatiou.com/gear/cursor-app-icon.png" }, // generic cursor icon
+        { name: "Visual Studio Code", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+      ]
     },
     {
       icon: Database,
       title: "Database",
       color: "bg-green-500/10 text-green-500",
-      skills: ["SQL Server", "MySQL"]
+      skills: [
+        { name: "SQL Server", img: "https://tse2.mm.bing.net/th/id/OIP.NJ9iVF6yzkGNw11Q-7zeQgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { name: "MySQL", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
+      ]
     },
     {
       icon: Wrench,
       title: "Lainnya",
       color: "bg-orange-500/10 text-orange-500",
-      skills: ["Microsoft Office", "Figma", "Operasi Forklift"]
+      skills: [
+        { name: "Microsoft Office", img: "https://tse2.mm.bing.net/th/id/OIP.oV0bRLDY35OquVAKpq2cjAHaEK?w=1280&h=720&rs=1&pid=ImgDetMain&o=7&rm=3" },
+        { name: "Figma", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+        { name: "Operasi Forklift", img: "https://cdn-icons-png.flaticon.com/512/3197/3197700.png" }
+      ]
     }
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 section-light">
+    <section id="skills" className="py-42 px-20 section-light text-lg md:text-xl">
       <div 
         ref={ref}
         className={`container mx-auto max-w-6xl transition-all duration-[1200ms] ease-out ${
@@ -72,7 +95,8 @@ const Skills = () => {
                     variant="secondary"
                     className="text-sm py-2 px-4 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-smooth cursor-default"
                   >
-                    {skill}
+                    <img src={skill.img} alt={skill.name} className="h-4 w-4" />
+                    {skill.name}
                   </Badge>
                 ))}
               </div>
