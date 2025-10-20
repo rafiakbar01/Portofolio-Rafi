@@ -1,73 +1,54 @@
-# Welcome to your Lovable project
+🧑‍💻 Rafi Akbar Hibatullah — Personal Portfolio
 
-## Project info
+Selamat datang di repository portfolio pribadi saya.
+Proyek ini dibuat untuk menampilkan profil, pengalaman, dan beberapa proyek yang pernah saya kerjakan dalam bidang pengembangan web dan sistem informasi.
 
-**URL**: https://lovable.dev/projects/38f4ba66-30ef-45e0-b836-e197a511c2f5
 
-## How can I edit this code?
+🛠️ Teknologi yang Digunakan
 
-There are several ways of editing your application.
+Proyek ini dibangun menggunakan teknologi modern front-end:
 
-**Use Lovable**
+Vite — Development environment yang cepat dan ringan
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/38f4ba66-30ef-45e0-b836-e197a511c2f5) and start prompting.
+React + TypeScript — Library utama untuk membangun antarmuka
 
-Changes made via Lovable will be committed automatically to this repo.
+Tailwind CSS — Utility-first CSS framework
 
-**Use your preferred IDE**
+shadcn/ui — Komponen UI modern berbasis Radix dan Tailwind
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+⚙️ Cara Menjalankan Project di Lokal
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Pastikan sudah menginstal Node.js dan npm di komputer kamu.
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+# 1. Clone repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# 2. Masuk ke folder project
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. Jalankan server pengembangan
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Proyek ini dapat di-deploy ke berbagai platform seperti:
 
-**Use GitHub Codespaces**
+Vercel
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Netlify
 
-## What technologies are used for this project?
+GitHub Pages
 
-This project is built with:
+Cukup build aplikasi dengan:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+npm run build
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/38f4ba66-30ef-45e0-b836-e197a511c2f5) and click on Share -> Publish.
+Lalu upload isi folder dist/ ke platform hosting pilihanmu.
 
-## Can I connect a custom domain to my Lovable project?
+📄 Lisensi
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Proyek ini dibuat untuk tujuan pribadi dan pembelajaran.
+Silakan gunakan sebagai referensi dengan mencantumkan kredit yang sesuai.
