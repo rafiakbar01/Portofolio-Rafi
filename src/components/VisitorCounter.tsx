@@ -108,22 +108,12 @@ const VisitorCounter = () => {
             </h2>
           </div>
           <p className="text-sm text-gray-600">
-            Statistik pengunjung portofolio ini (Realtime dengan Supabase)
+            Statistik pengunjung portofolio ini
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <Users className="h-5 w-5 text-primary" />
-              <h3 className="text-sm font-semibold text-gray-600">
-                Total Pengunjung
-              </h3>
-            </div>
-            <p className="text-3xl font-bold text-primary">
-              {stats.totalVisitors.toLocaleString()}
-            </p>
-          </div>
+         
 
           <div className="bg-green-50 border border-green-200 rounded-xl p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-3">
@@ -137,6 +127,19 @@ const VisitorCounter = () => {
             </p>
             <p className="text-xs text-green-500 mt-1">
               {formatDate(stats.lastVisitDate)}
+            </p>
+          </div>
+
+
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <Users className="h-5 w-5 text-primary" />
+              <h3 className="text-sm font-semibold text-gray-600">
+                Total Pengunjung
+              </h3>
+            </div>
+            <p className="text-3xl font-bold text-primary">
+              {stats.totalVisitors.toLocaleString()}
             </p>
           </div>
         </div>

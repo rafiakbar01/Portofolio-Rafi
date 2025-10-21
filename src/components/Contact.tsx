@@ -10,7 +10,7 @@ const Contact = () => {
       icon: Mail,
       label: "Email",
       value: "rafiihibatullah420@gmail.com",
-      link: "mailto:rafiihibatullah420@gmail.com"
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=rafiihibatullah420@gmail.com"
     },
     {
       icon: MessageCircle,
@@ -71,16 +71,30 @@ const Contact = () => {
               <div className="space-y-5">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      <info.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
+                    {info.link ? (
+                      <a 
+                        href={info.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-primary/10 rounded-lg hover:bg-primary/20 transition-smooth cursor-pointer"
+                        title={`Buka ${info.label}`}
+                      >
+                        <info.icon className="h-5 w-5 text-primary" />
+                      </a>
+                    ) : (
+                      <div className="p-3 bg-primary/10 rounded-lg">
+                        <info.icon className="h-5 w-5 text-primary" />
+                      </div>
+                    )}
+                    <div className="flex-1">
                       <p className="font-semibold text-foreground mb-1">
                         {info.label}
                       </p>
                       {info.link ? (
                         <a 
                           href={info.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-muted-foreground hover:text-primary transition-smooth"
                         >
                           {info.value}

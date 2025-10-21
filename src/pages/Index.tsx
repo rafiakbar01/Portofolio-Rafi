@@ -6,10 +6,12 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import VisitorCounter from "@/components/VisitorCounter";
+import Header from "@/components/Header"; 
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <Header />
       <Hero />
       <About />
       <Education />

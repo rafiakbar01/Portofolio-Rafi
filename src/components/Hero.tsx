@@ -4,7 +4,7 @@ import profilePhoto from "@/assets/Rafi_profile.jpg";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-4 gradient-hero">
+    <section id="hero" className="min-h-screen flex items-center justify-center py-20 px-4 gradient-hero pt-24">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
           {/* Profile Photo */}
