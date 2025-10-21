@@ -5,6 +5,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <Projects />
       <Skills />
       <Contact />
+      <VisitorCounter />
       
       {/* Footer */}
       <footer className="py-8 px-4 bg-foreground text-background">
