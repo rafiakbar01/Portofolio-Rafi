@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { Eye, Calendar, TrendingUp, Users } from 'lucide-react'
 
-// === Supabase Setup (langsung di file) ===
+// === Supabase Setup ===
 const supabaseUrl = "https://uamdluowoloabatbxfks.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhbWRsdW93b2xvYWJhdGJ4ZmtzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA5OTcwODAsImV4cCI6MjA3NjU3MzA4MH0.zY7m38Es8Rly37SBG9P8i6byFDNt_GHSuFxSCT5VE_Y"
 const supabase = createClient(supabaseUrl, supabaseKey)
@@ -14,7 +14,6 @@ interface VisitorStats {
 }
 
 function getTodayJakartaISODate() {
-  // get current date in Asia/Jakarta and return YYYY-MM-DD
   const jakartaDate = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" })
   )
@@ -29,11 +28,10 @@ const VisitorCounter = () => {
   })
   const [isNewVisitor, setIsNewVisitor] = useState(false)
 
-  // Ambil data dari Supabase
+  // Ambil statistik
   const fetchStats = async () => {
     const today = getTodayJakartaISODate()
     const { data, error } = await supabase.from('visitors').select('*')
-
     if (error) {
       console.error(error)
       return
@@ -49,33 +47,55 @@ const VisitorCounter = () => {
     })
   }
 
-  // Simpan kunjungan baru
+  // Simpan kunjungan baru jika belum ada
   const recordVisit = async () => {
     const today = getTodayJakartaISODate()
 
-    // ambil IP publik
-    const res = await fetch('https://api.ipify.org?format=json')
-    const ipData = await res.json()
-    const ip = ipData.ip
+    try {
+      // ambil IP publik
+      const res = await fetch('https://api.ipify.org?format=json')
+      const ipData = await res.json()
+      const ip = ipData.ip
 
-    await supabase.from('visitors').insert([{ date: today, ip_address: ip }])
-    setIsNewVisitor(true)
+      // cek apakah IP sudah ada hari ini
+      const { data: existing, error: checkError } = await supabase
+        .from('visitors')
+        .select('*')
+        .eq('date', today)
+        .eq('ip_address', ip)
+        .maybeSingle()
+
+      if (checkError) {
+        console.error('Error checking visitor:', checkError)
+        return
+      }
+
+      if (!existing) {
+        // belum ada, maka simpan
+        const { error: insertError } = await supabase
+          .from('visitors')
+          .insert([{ date: today, ip_address: ip }])
+        if (insertError) console.error('Insert error:', insertError)
+        else setIsNewVisitor(true)
+      } else {
+        console.log('👀 Pengunjung dengan IP ini sudah tercatat hari ini.')
+      }
+    } catch (err) {
+      console.error('Error fetching IP:', err)
+    }
   }
 
   useEffect(() => {
     fetchStats()
     recordVisit()
 
-    // === Langganan realtime perubahan data ===
+    // Realtime listener
     const channel = supabase
       .channel('visitor_changes')
       .on(
         'postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'visitors' },
-        (payload) => {
-          console.log('🔄 Update realtime:', payload)
-          fetchStats()
-        }
+        () => fetchStats()
       )
       .subscribe()
 
@@ -86,8 +106,6 @@ const VisitorCounter = () => {
 
   const formatDate = (dateString: string) => {
     if (!dateString) return ""
-    // Always display as Jakarta time
-    // Append "T00:00:00+07:00" to ensure correct local date
     const date = new Date(dateString + "T00:00:00+07:00")
     return date.toLocaleDateString('id-ID', {
       timeZone: "Asia/Jakarta",
@@ -113,8 +131,6 @@ const VisitorCounter = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-         
-
           <div className="bg-green-50 border border-green-200 rounded-xl p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-3">
               <Calendar className="h-5 w-5 text-green-600" />
@@ -129,7 +145,6 @@ const VisitorCounter = () => {
               {formatDate(stats.lastVisitDate)}
             </p>
           </div>
-
 
           <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-3">
